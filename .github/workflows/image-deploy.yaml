@@ -7,6 +7,8 @@ on:
       - master
     paths:
       - app/**
+      - Dockerfile
+      - nginx.conf
     tags:
       - 'v*.*.*'
 
