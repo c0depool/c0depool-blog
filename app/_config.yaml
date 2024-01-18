@@ -16,7 +16,7 @@ timezone:
 
 title: c0depool # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
+tagline: codepool blog # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
