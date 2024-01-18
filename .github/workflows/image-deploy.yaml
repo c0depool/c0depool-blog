@@ -5,10 +5,10 @@ on:
     branches:
       - main
       - master
-    # paths:
-    #   - app/**
-    #   - Dockerfile
-    #   - nginx.conf
+    paths:
+      - app/**
+      - Dockerfile
+      - nginx.conf
     tags:
       - 'v*.*.*'
 
