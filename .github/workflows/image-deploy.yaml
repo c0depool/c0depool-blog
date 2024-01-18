@@ -5,10 +5,10 @@ on:
     branches:
       - main
       - master
-    paths:
-      - app/**
-      - Dockerfile
-      - nginx.conf
+    # paths:
+    #   - app/**
+    #   - Dockerfile
+    #   - nginx.conf
     tags:
       - 'v*.*.*'
 
@@ -60,15 +60,16 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}      
         uses: sigstore/cosign-installer@v2.0.0
 
-      - name: Write signing key to disk
-        if: ${{ github.event_name != 'pull_request' }}      
-        run: 'echo "$KEY" > cosign.key'
-        shell: bash
-        env:
-          KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+      # - name: Write signing key to disk
+      #   if: ${{ github.event_name != 'pull_request' }}      
+      #   run: 'echo "$KEY" > cosign.key'
+      #   shell: bash
+      #   env:
+      #     KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
 
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
-        run: cosign sign --key cosign.key ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+        run: cosign sign --key env://COSIGN_PRIVATE_KEY  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
