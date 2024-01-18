@@ -58,7 +58,7 @@ jobs:
 
       - name: Install Cosign
         if: ${{ github.event_name != 'pull_request' }}      
-        uses: sigstore/cosign-installer@v2.0.0
+        uses: sigstore/cosign-installer@v3.3.0
 
       # - name: Write signing key to disk
       #   if: ${{ github.event_name != 'pull_request' }}      
