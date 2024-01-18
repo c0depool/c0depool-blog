@@ -72,4 +72,6 @@ jobs:
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
           COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
-        run: cosign sign --key=env://COSIGN_PRIVATE_KEY  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          DIGEST: ${{ steps.build-and-push.outputs.digest }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: cosign sign --key=env://COSIGN_PRIVATE_KEY  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${TAGS}@${DIGEST}
