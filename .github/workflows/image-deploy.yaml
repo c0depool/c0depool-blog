@@ -49,7 +49,7 @@ jobs:
 
       - name: Build and push Docker image
         id: build-and-push
-        uses: docker/build-push-action@965c6a410d446a30e95d35052c67d6eded60dad6
+        uses: docker/build-push-action@v5.1.0
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
@@ -74,4 +74,4 @@ jobs:
           COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
           DIGEST: ${{ steps.build-and-push.outputs.digest }}
           TAGS: ${{ steps.meta.outputs.tags }}
-        run: cosign sign --key=env://COSIGN_PRIVATE_KEY '${TAGS}@${DIGEST}'
+        run: cosign sign --key=env://COSIGN_PRIVATE_KEY ${TAGS}@${DIGEST}
