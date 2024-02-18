@@ -122,7 +122,7 @@ For this guide, we use Cloudflare Tunnels due to its simplicity and ease of use.
 
 1. Sign up for a [Cloudflare account](https://dash.cloudflare.com/sign-up).
 2. From your Cloudflare Dashboard, select Websites > Add a site > and enter your domain name:
-![Cloudflare add site](<../assets/img/2024-01-18-how-to-self-host-static-site/cloudflare_add_site.png>)
+![Cloudflare add site](/assets/img/2024-01-18-how-to-self-host-static-site/cloudflare_add_site.png)
 3. Select the free plan and click on next.
 4. If your domain is registered via Cloudflare, you don't have to update your nameservers, otherwise update your nameservers as shown by Cloudflare. You might need to check your registrar's documentation for this. More info [here](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/).
 5. Once your nameservers are updated, the sites should show as active in Cloudflare dashboard.
