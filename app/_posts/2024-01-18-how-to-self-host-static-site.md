@@ -1,30 +1,30 @@
 ---
-title: How to self-host a static website (like this one)?
+title: How to Build and Self-host a Static Website
 date: 2024-02-13 00:59:00 +0000
 categories: [Blogging]
 tags: [self-hosting]
 pin: true
 ---
 
-This blog is (mostly) self-hosted at my home on an old Asus Chromebox running as a container in my local Kubernetes cluster. Being said that, running a static website at home doesn't need any fancy hardware, containers or kubernetes. You can run this off a tiny Raspberry Pi Zero, an old laptop or even an old smartphone. If you don't want to self-host, there are lots of hosting like services [Github pages](https://pages.github.com/), [Netlify](https://www.netlify.com/), [Heroku](https://www.heroku.com/) etc. where you can run your static site for free! However, in this article, we dive a little deeper into self-hosting and see various ways we can run a website at home.
+This blog is (mostly) self-hosted at my home on an old Asus Chromebox running as a container in my local Kubernetes cluster. That being said, running a static website at home doesn’t require any fancy hardware, containers, or Kubernetes. You can run this off a tiny Raspberry Pi Zero, an old laptop, or even an old smartphone. If you don’t want to self-host, there are lots of hosting services like [Github pages](https://pages.github.com/), [Netlify](https://www.netlify.com/), [Heroku](https://www.heroku.com/) etc., where you can run your static site for free! However, in this guide, we dive a little deeper into self-hosting and explore various ways we can run a website at home. If you feel this is total overkill, you are probably right! 😉
 
 ## What is a static-website?
 
 A static website is a type of website that displays fixed content to users. In contrast to dynamic websites, which generate content on the fly, static websites have pre-built content that remains the same for every user. The content is typically coded in HTML and may include stylesheets and JavaScript for presentation and interactivity. Static websites are great for blogs, resumes, portfolios or similar sites which don't need complex interactive features, backend databases, user logins etc. 
 
-Now if you are not a front-end developer, it might be difficult to code, maintain and update static websites on your own. [Static Site Generators](https://www.cloudflare.com/learning/performance/static-site-generator/) (SSGs) are tools that automate the process of creating static websites. They take source files, often written in Markdown or a similar markup language, along with templates and other assets and generate a complete set of static HTML, CSS and JavaScript files.
+If you are not a front-end developer, it might be difficult to code, maintain and update static websites on your own. [Static Site Generators](https://www.cloudflare.com/learning/performance/static-site-generator/) (SSGs) are tools that automate the process of creating static websites. They take source files, often written in Markdown or a similar markup language, along with templates and other assets and generate a complete set of static HTML, CSS and JavaScript files.
 
-Some of the popular SSGs are Jekyll, Hugo, Gatsby, Eleventy etc. We will use Jekyll for this guide since this blog was made using Jekyll with [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) theme.
+Some of the popular SSGs include [Jekyll](https://jekyllrb.com/), [Hugo](https://gohugo.io/), [Gatsby](https://www.gatsbyjs.com/) and [Eleventy](https://www.11ty.dev/). We will use Jekyll for this guide since this blog was made using Jekyll with [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) theme.
 
 ## Prerequisites for this guide
 
 - Ownership of a domain. Although it is possible to use a free subdomain using services like [DuckDNS](https://www.duckdns.org/), having a custom domain allows you to create a unique and memorable identity for your website.
-- A Linux machine for developing your site as well as hosting it. 
+- A Linux machine for building your site and hosting it. Preferably debian based, like [Ubuntu Server 22.04.3 LTS](https://releases.ubuntu.com/jammy/)
 - Basic understanding of Linux and Networking.
 
 ## Building the Static Site
 
-Jekyll has a pretty good [step-by-step tutorial](https://jekyllrb.com/docs/step-by-step/01-setup/) on how to build a basic website, however if you need a neat website with a minimal theme you are better off using any of the open source Jekyll themes from [jekyllthemes.org](http://jekyllthemes.org/). A typical Jekyll theme project directory structure includes:
+Jekyll has a pretty good [step-by-step tutorial](https://jekyllrb.com/docs/step-by-step/01-setup/) on how to build a basic website, however if you are looking for a stylized site with a minimal theme you are better off using any of the open source Jekyll themes from [jekyllthemes.org](http://jekyllthemes.org/). A typical Jekyll theme project directory structure includes:
 
 - _config.yaml: This YAML file contains configuration settings for the Jekyll site, including site metadata, settings for plugins and other global configurations.
 - _includes: This directory contains snippets of reusable code that can be included in layouts and posts using [Liquid](https://jekyllrb.com/docs/liquid/) tags. This helps in modularizing the code.
@@ -121,7 +121,7 @@ Once your website is production ready, it is time to publish it to the internet.
 For this guide, we use Cloudflare Tunnels due to its simplicity and ease of use. Cloudflare is an industry leader in Content Delivery Network, DDoS Protection and Website Performance Optimization. Cloudflare Tunnels allows you to create a free tunnel to expose your websites via Cloudflare's proxy which hides your public IP, provides free SSL certificate, enables DDoS protection, caching, Firewall, Email routing and much more! However, please keep in mind that Clouflare can technically inspect your traffic even if you use SSL/TLS as they intercept SSL communication using their own certificate. Since we are hosting a static website, it shouldn't matter to us since there is no user login or data transfer to the server. Let us get stared with Cloudflare Tunnel.
 
 1. Sign up for a [Cloudflare account](https://dash.cloudflare.com/sign-up).
-2. From your Cloudflare Dashboard, select Websites > Add a site > and enter your domain name:
+2. From your Cloudflare Dashboard, select Websites → Add a site → and enter your domain name:
 ![Cloudflare add site](/assets/img/2024-01-18-how-to-self-host-static-site/cloudflare_add_site.png)
 3. Select the free plan and click on next.
 4. If your domain is registered via Cloudflare, you don't have to update your nameservers, otherwise update your nameservers as shown by Cloudflare. You might need to check your registrar's documentation for this. More info [here](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/).
@@ -166,7 +166,7 @@ systemctl status cloudflared
 ```
 11. If the configuration is correct, your static site should be now exposed to the internet via your domain name.
 
-To troubleshoot your tunnel, check `journalctl -u cloudflared.service` for any issues.
+To troubleshoot your tunnel, check the logs using the command `journalctl -u cloudflared.service` for any issues.
 
-That's it. Congratulations on self-hosting your static website!
-Hope you had a positive learning experience. Stay tuned for similar guides. Appreciate your participation!
+That will be it for this guide. Congratulations on self-hosting your static website! 🚀\
+Stay tuned for similar guides. Thank you!
