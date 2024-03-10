@@ -1,7 +1,7 @@
 ---
-title: Beginner's Guide to Self-hosting using Docker, WireGuard and DuckDNS
+title: Beginner's Guide to Self-Hosting using Docker, WireGuard and DuckDNS
 date: 2024-02-20 00:59:00 +0000
-categories: [Networking]
+categories: [Self-Hosting]
 tags: [self-hosting,wireguard,vpn]
 pin: false
 image:
@@ -10,7 +10,7 @@ image:
   alt: Self-hosted Nextcloud using Docker and WigreGuard tunnel.
 ---
 
-Self-hosting is becoming increasingly popular these days. It is essentially the practice of locally hosting and managing services, putting you in full control of your data. A few years back, I wrote a [guide](https://medium.com/@codepool/beginners-guide-to-self-hosting-on-the-internet-with-ssh-tunnel-and-free-domain-name-9cf471e2fab8) on self-hosting Nextcloud and exposing it to the internet using a simple SSH tunnel. This is an updated version of the same guide, using a WireGuard tunnel instead of SSH. We will be hosting [Nextcloud](https://nextcloud.com/) again - a popular, free, open-source, and self-hosted alternative to Google Drive with many more features and add-ons.
+Self-Hosting is becoming increasingly popular these days. It is essentially the practice of locally hosting and managing services, putting you in full control of your data. A few years back, I wrote a [guide](https://medium.com/@codepool/beginners-guide-to-self-hosting-on-the-internet-with-ssh-tunnel-and-free-domain-name-9cf471e2fab8) on self-hosting Nextcloud and exposing it to the internet using a simple SSH tunnel. This is an updated version of the same guide, using a WireGuard tunnel instead of SSH. We will be hosting [Nextcloud](https://nextcloud.com/) again - a popular, free, open-source and self-hosted alternative to Google Drive with many more features and add-ons.
 
 ## Prerequisites
 
