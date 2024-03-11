@@ -1,5 +1,5 @@
 ---
-title: How to Build and Self-Hosting a Static Website
+title: How to Build and Self-Host a Static Website
 date: 2024-02-13 00:59:00 +0000
 categories: [Blogging]
 tags: [self-hosting]
