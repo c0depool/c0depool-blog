@@ -3,14 +3,13 @@ name: image-deploy
 on:
   push:
     branches:
-      - main
-      - master
       - dev
     paths:
       - app/**
       - Dockerfile
       - nginx.conf
-
+    tags:
+      - 'v*.*.*'
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
