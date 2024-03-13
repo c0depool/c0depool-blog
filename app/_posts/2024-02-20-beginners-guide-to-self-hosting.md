@@ -5,8 +5,8 @@ categories: [Self-Hosting]
 tags: [self-hosting,wireguard,vpn]
 pin: false
 image:
-  path: /assets/img/2024-02-20-beginners-guide-to-self-hosting/self-host-docker-wireguard.png
-  lqip: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAECAYAAAC3OK7NAAAAAklEQVR4AewaftIAAAB4SURBVF3BzQqCQBSA0c9BrCnCCqGFi3yb3v8BWsbUIkio+fM6N2zZOZV7Op1kQqTQ7Q80ktE5M9uWa4i06cPGWkwMkaIFFzJQwWoH9sjCecG9A0mEeugHFucTP0UVVDHGcOm3SG6pmzWGP8F7XuOIiJBT5P64sfgCvAU8sstINF0AAAAASUVORK5CYII=
+  path: /assets/img/2024-02-20-beginners-guide-to-self-hosting/self-host-docker-wireguard.webp
+  lqip: data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAAAwAQCdASoQAAkABUB8JZwAA3AA/vB89qad8/nZIqVwAAAA
   alt: Self-hosted Nextcloud using Docker and WigreGuard tunnel.
 ---
 
@@ -124,10 +124,10 @@ We can use WireGuard to create a secure tunnel to expose your services to extern
 
 1. Login to your Oracle Cloud Account and create an *Always Free* eligible compute instance. Menu → Compute → [Create instance](https://cloud.oracle.com/compute/instances/create)
 2. Provide the instance name, for VM image select Canonical Ubuntu 22.04. 
-![OCI Create VM](/assets/img/2024-02-20-beginners-guide-to-self-hosting/oci_create_vm.png)
+![OCI Create VM](/assets/img/2024-02-20-beginners-guide-to-self-hosting/oci_create_vm.webp)
 3. Scroll down the page and download your SSH private key. Leave the rest of the settings as default and click on create. Wait for the instance to come up and note down the public IP of the machine.
 4. On your Oracle Cloud console, go to Menu → Networking → Virtual Cloud Networks → Open the default VCN → Under Resources select Security Lists → Open the default Security List → Add a new ingress rule as below for the WireGuard (51820), HTTP (80) and HTTPS (443) traffic. SSH Port should already be open by default.
-![OCI Security List](/assets/img/2024-02-20-beginners-guide-to-self-hosting/oci_security_list.png)
+![OCI Security List](/assets/img/2024-02-20-beginners-guide-to-self-hosting/oci_security_list.webp)
 5. Login to your DuckDNS account and update your domain name with the public IP of your remote server.
 6. From your local machine try logging into the remote server using the private key you downloaded earlier.
 ```bash
@@ -294,7 +294,7 @@ sudo mv peer_wg0.conf /etc/wireguard/wg0.conf
 ```
 3. Modify your `/etc/wireguard/wg0.conf` to add the PostUP and PostDown commands for port-forwarding. Add below lines between the `[Interface]` and `[Peer]` section. Make sure you update `eth0` with your default network interface and `<nextcloud server IP>` with your local server IP.
 ```
-# PostUPp
+# PostUp
 PostUp = iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 # Nexcloud port-forward
 PostUP = iptables -t nat -A PREROUTING -p tcp -i wg0 --dport 8080 -j DNAT --to <nextcloud server IP>:8080
