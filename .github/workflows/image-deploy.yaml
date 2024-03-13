@@ -10,8 +10,6 @@ on:
       - app/**
       - Dockerfile
       - nginx.conf
-    tags:
-      - 'v*.*.*'
 
 env:
   REGISTRY: ghcr.io

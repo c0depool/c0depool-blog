@@ -294,7 +294,7 @@ sudo mv peer_wg0.conf /etc/wireguard/wg0.conf
 ```
 3. Modify your `/etc/wireguard/wg0.conf` to add the PostUP and PostDown commands for port-forwarding. Add below lines between the `[Interface]` and `[Peer]` section. Make sure you update `eth0` with your default network interface and `<nextcloud server IP>` with your local server IP.
 ```
-# PostUPp
+# PostUp
 PostUp = iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 # Nexcloud port-forward
 PostUP = iptables -t nat -A PREROUTING -p tcp -i wg0 --dport 8080 -j DNAT --to <nextcloud server IP>:8080
