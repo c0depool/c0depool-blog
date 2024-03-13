@@ -5,7 +5,7 @@ categories: [Self-Hosting]
 tags: [self-hosting,wireguard,vpn]
 pin: false
 image:
-  path: /assets/img/2024-02-20-beginners-guide-to-self-hosting/self-host-docker-wireguard.png
+  path: /assets/img/2024-02-20-beginners-guide-to-self-hosting/self-host-docker-wireguard.webp
   lqip: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAECAYAAAC3OK7NAAAAAklEQVR4AewaftIAAAB4SURBVF3BzQqCQBSA0c9BrCnCCqGFi3yb3v8BWsbUIkio+fM6N2zZOZV7Op1kQqTQ7Q80ktE5M9uWa4i06cPGWkwMkaIFFzJQwWoH9sjCecG9A0mEeugHFucTP0UVVDHGcOm3SG6pmzWGP8F7XuOIiJBT5P64sfgCvAU8sstINF0AAAAASUVORK5CYII=
   alt: Self-hosted Nextcloud using Docker and WigreGuard tunnel.
 ---
@@ -124,10 +124,10 @@ We can use WireGuard to create a secure tunnel to expose your services to extern
 
 1. Login to your Oracle Cloud Account and create an *Always Free* eligible compute instance. Menu → Compute → [Create instance](https://cloud.oracle.com/compute/instances/create)
 2. Provide the instance name, for VM image select Canonical Ubuntu 22.04. 
-![OCI Create VM](/assets/img/2024-02-20-beginners-guide-to-self-hosting/oci_create_vm.png)
+![OCI Create VM](/assets/img/2024-02-20-beginners-guide-to-self-hosting/oci_create_vm.webp)
 3. Scroll down the page and download your SSH private key. Leave the rest of the settings as default and click on create. Wait for the instance to come up and note down the public IP of the machine.
 4. On your Oracle Cloud console, go to Menu → Networking → Virtual Cloud Networks → Open the default VCN → Under Resources select Security Lists → Open the default Security List → Add a new ingress rule as below for the WireGuard (51820), HTTP (80) and HTTPS (443) traffic. SSH Port should already be open by default.
-![OCI Security List](/assets/img/2024-02-20-beginners-guide-to-self-hosting/oci_security_list.png)
+![OCI Security List](/assets/img/2024-02-20-beginners-guide-to-self-hosting/oci_security_list.webp)
 5. Login to your DuckDNS account and update your domain name with the public IP of your remote server.
 6. From your local machine try logging into the remote server using the private key you downloaded earlier.
 ```bash
