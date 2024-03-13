@@ -6,7 +6,7 @@ tags: [self-hosting,wireguard,vpn]
 pin: false
 image:
   path: /assets/img/2024-02-20-beginners-guide-to-self-hosting/self-host-docker-wireguard.webp
-  lqip: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAECAYAAAC3OK7NAAAAAklEQVR4AewaftIAAAB4SURBVF3BzQqCQBSA0c9BrCnCCqGFi3yb3v8BWsbUIkio+fM6N2zZOZV7Op1kQqTQ7Q80ktE5M9uWa4i06cPGWkwMkaIFFzJQwWoH9sjCecG9A0mEeugHFucTP0UVVDHGcOm3SG6pmzWGP8F7XuOIiJBT5P64sfgCvAU8sstINF0AAAAASUVORK5CYII=
+  lqip: data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAAAwAQCdASoQAAkABUB8JZwAA3AA/vB89qad8/nZIqVwAAAA
   alt: Self-hosted Nextcloud using Docker and WigreGuard tunnel.
 ---
 
