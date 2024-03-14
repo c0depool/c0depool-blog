@@ -334,4 +334,4 @@ sudo wg show
 
 Congratulations on self-hosting Nextcloud and exposing it to internet! Check out this [awesome list](https://github.com/awesome-selfhosted/awesome-selfhosted) of self hosted services for inspiration on what to host next. 
 
-Thank you for reading, please share your feedback in the comments. Peace ✌️
+Thank you for reading, please share your feedback in the comments. Peace. ✌️
