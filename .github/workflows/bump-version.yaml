@@ -25,3 +25,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
         PRERELEASE: true
+        VERBOSE: true
