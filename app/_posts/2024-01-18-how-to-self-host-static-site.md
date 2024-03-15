@@ -115,7 +115,7 @@ Once your website is production ready, it is time to publish it to the internet.
 
 - Creating a [Cloudflare Tunnel](https://www.cloudflare.com/products/tunnel/) to your web-server and allowing Cloudflare to act as a reverse-proxy.
 - Creating a simple SSH reverse tunnel to a remote cloud instance which acts as a reverse-proxy.
-- Creating a self managed WireGuard VPN tunnel to a remote cloud instance which acts as a reverse-proxy.
+- Creating a self managed WireGuard VPN tunnel to a remote cloud instance which acts as a reverse-proxy. Interested? Check [this](/posts/beginners-guide-to-self-hosting/) out.
 - Using AWS or other public cloud platforms to act as a front-end or Web Application Firewall.
 
 For this guide, we use Cloudflare Tunnels due to its simplicity and ease of use. Cloudflare is an industry leader in Content Delivery Network, DDoS Protection and Website Performance Optimization. Cloudflare Tunnels allows you to create a free tunnel to expose your websites via Cloudflare's proxy which hides your public IP, provides free SSL certificate, enables DDoS protection, caching, Firewall, Email routing and much more! However, please keep in mind that Clouflare can technically inspect your traffic even if you use SSL/TLS as they intercept SSL communication using their own certificate. Since we are hosting a static website, it shouldn't matter to us since there is no user login or data transfer to the server. Let us get stared with Cloudflare Tunnel.

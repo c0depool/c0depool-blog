@@ -2,7 +2,7 @@
 title: Beginner's Guide to Self-Hosting using Docker, WireGuard and DuckDNS
 date: 2024-02-20 00:59:00 +0000
 categories: [Self-Hosting]
-tags: [self-hosting,wireguard,vpn]
+tags: [self-hosting,wireguard,vpn,nextcloud]
 pin: false
 image:
   path: /assets/img/2024-02-20-beginners-guide-to-self-hosting/self-host-docker-wireguard.webp
