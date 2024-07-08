@@ -6,7 +6,8 @@
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "packageRules": [
     {
-      "matchDepTypes": ["github-actions"],
+      "description": "Auto merge Github Actions",
+      "matchFileNames": [".github/workflows/**"],
       "matchUpdateTypes": ["minor","patch"],
       "automerge": true
     }
