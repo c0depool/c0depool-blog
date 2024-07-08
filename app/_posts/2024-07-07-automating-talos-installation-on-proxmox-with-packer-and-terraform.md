@@ -101,8 +101,8 @@ git clone https://github.com/c0depool/c0depool-iac.git
 cd /var/lib/vz/template/iso
 wget https://geo.mirror.pkgbuild.com/iso/2024.06.01/archlinux-2024.06.01-x86_64.iso
 ```
-2. Update the `c0depool-iac/packer/talos-packer/vars/local.pkrvars.hcl` file in the cloned repository with the Proxmox node and Talos details.
-3. Run Packer to build the Talos template.
+4. Update the `c0depool-iac/packer/talos-packer/vars/local.pkrvars.hcl` file in the cloned repository with the Proxmox node and Talos details.
+5. Run Packer to build the Talos template.
 ```bash
 cd $HOME/c0depool-iac/packer/talos-packer/
 packer init -upgrade .
@@ -202,11 +202,11 @@ talosctl bootstrap -n <master-node ip>
 mkdir -p $HOME/.kube
 talosctl -n <master-node ip> kubeconfig $HOME/.kube/config
 ```
-8. Check the status of your nodes. Since we use Cilium for container networking, the nodes might not be in "Ready" state to accept workloads. We can fix it later by installing Cilium.
+4. Check the status of your nodes. Since we use Cilium for container networking, the nodes might not be in "Ready" state to accept workloads. We can fix it later by installing Cilium.
 ```bash
 kubectl get nodes
 ```
-9. Optional - if you need any custom extensions, upgrade the cluster using the factory image from [factory.talos.dev](https://factory.talos.dev/).
+5. Optional - if you need any custom extensions, upgrade the cluster using the factory image from [factory.talos.dev](https://factory.talos.dev/).
 ```bash
 talosctl upgrade --image factory.talos.dev/installer/<image schematic ID>:<talos version> --preserve --nodes "<list of master and worker nodes, comma separated>"
 # Verify extensions for each node
