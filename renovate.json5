@@ -3,5 +3,12 @@
   "extends": [
     "config:base"
   ],
-  "dependencyDashboardTitle": "Renovate Dashboard 🤖"
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "packageRules": [
+    {
+      "matchDepTypes": ["github-actions"],
+      "matchUpdateTypes": ["minor","patch"],
+      "automerge": true
+    }
+  ]
 }
