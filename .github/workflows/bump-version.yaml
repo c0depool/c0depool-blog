@@ -2,6 +2,10 @@ name: Bump version
 
 on:
   pull_request:
+    paths:
+      - app/**
+      - Dockerfile
+      - nginx.conf
     types:
       - closed
     branches:
