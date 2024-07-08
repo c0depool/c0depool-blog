@@ -3,6 +3,7 @@
   "extends": [
     "config:base"
   ],
+  "baseBranches": ["dev"],
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "packageRules": [
     {
