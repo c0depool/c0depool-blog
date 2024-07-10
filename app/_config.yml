@@ -42,7 +42,7 @@ social_preview_image: # string, local or CORS resources
 toc: true
 
 comments:
-  active: giscus
+  provider: giscus
   giscus:
     repo: c0depool/c0depool-blog
     repo_id: R_kgDOLGPppQ
