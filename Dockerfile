@@ -1,4 +1,4 @@
-FROM --platform=linux/x86_64 ruby:3.3.4-alpine3.19 as builder
+FROM --platform=linux/x86_64 ruby:3.3.4-alpine as builder
 
 RUN apk add --update \
     build-base \
@@ -14,7 +14,7 @@ RUN bundle install
 
 RUN JEKYLL_ENV=production bundle exec jekyll b
 
-FROM nginx:1.25.1-alpine3.17-slim
+FROM nginx:1.25.1-alpine-slim
 
 COPY --from=builder /app/_site /usr/share/nginx/html
 
