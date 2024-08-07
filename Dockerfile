@@ -14,7 +14,7 @@ RUN bundle install
 
 RUN JEKYLL_ENV=production bundle exec jekyll b
 
-FROM nginx:1.25.1-alpine-slim
+FROM nginx:1.27.0-alpine-slim
 
 COPY --from=builder /app/_site /usr/share/nginx/html
 
