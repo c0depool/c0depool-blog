@@ -1,4 +1,4 @@
-FROM --platform=linux/x86_64 ruby:3.3.4-alpine as builder
+FROM --platform=linux/x86_64 ruby:3.4.0-preview1-slim-bullseye as builder
 
 RUN apk add --update \
     build-base \
