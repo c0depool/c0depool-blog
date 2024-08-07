@@ -15,7 +15,7 @@
     {
       "description": "Parse Dockerfile versioning",
       "matchFileNames": ["Dockerfile"],
-      "versioning": "docker"
+      "versioning": "loose"
     }
   ]
 }
