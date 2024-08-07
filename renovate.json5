@@ -11,11 +11,6 @@
       "matchFileNames": [".github/workflows/**"],
       "matchUpdateTypes": ["minor","patch"],
       "automerge": true
-    },
-    {
-      "description": "Parse Dockerfile",
-      "matchFileNames": ["Dockerfile"],
-      "versioning": "semver"
     }
   ]
 }
