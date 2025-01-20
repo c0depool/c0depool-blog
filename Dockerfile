@@ -11,9 +11,11 @@ WORKDIR /app
 
 COPY app .
 
+RUN bundle config --local force_ruby_platform true
+
 RUN bundle install
 
-RUN JEKYLL_ENV=production bundle exec jekyll b; exit 0
+RUN JEKYLL_ENV=production bundle exec jekyll b
 
 FROM nginx:1.27.1-alpine-slim
 
