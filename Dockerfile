@@ -1,7 +1,8 @@
-FROM --platform=linux/x86_64 ruby:3.3.4-alpine as builder
+FROM --platform=linux/x86_64 ruby:3.3.4-alpine AS builder
 
 RUN apk add --update \
     build-base \
+    git \
     zlib-dev && \
     rm -rf /var/cache/apk/* && \
     gem install bundler jekyll
