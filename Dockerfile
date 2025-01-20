@@ -1,7 +1,8 @@
-FROM --platform=linux/x86_64 ruby:3.3.4-alpine as builder
+FROM --platform=linux/x86_64 ruby:3.3.4-alpine AS builder
 
 RUN apk add --update \
     build-base \
+    git \
     zlib-dev && \
     rm -rf /var/cache/apk/* && \
     gem install bundler jekyll
@@ -10,11 +11,13 @@ WORKDIR /app
 
 COPY app .
 
+RUN bundle config --local force_ruby_platform true
+
 RUN bundle install
 
 RUN JEKYLL_ENV=production bundle exec jekyll b
 
-FROM nginx:1.27.0-alpine-slim
+FROM nginx:1.27.1-alpine-slim
 
 COPY --from=builder /app/_site /usr/share/nginx/html
 
