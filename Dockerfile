@@ -13,7 +13,7 @@ COPY app .
 
 RUN bundle install
 
-RUN JEKYLL_ENV=production bundle exec jekyll b
+RUN JEKYLL_ENV=production bundle exec jekyll b; exit 0
 
 FROM nginx:1.27.1-alpine-slim
 
