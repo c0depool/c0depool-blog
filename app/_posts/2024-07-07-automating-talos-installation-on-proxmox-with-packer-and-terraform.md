@@ -236,7 +236,7 @@ kind: CiliumLoadBalancerIPPool
 metadata: 
   name: "cilium-lb-pool"
 spec:
-  blocks: 
+  blocks:
     - cidr: "192.168.0.100/30"
 EOF
 ```
