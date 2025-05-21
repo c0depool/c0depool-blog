@@ -36,13 +36,6 @@ packer -v
 ```
 2. Install [Terraform](https://www.terraform.io/)
 ```bash
-sudo apt update && sudo apt install -y gnupg software-properties-common
-wget -O- https://apt.releases.hashicorp.com/gpg | \
-gpg --dearmor | \
-sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update
 sudo apt install terraform
 terraform -v
@@ -235,15 +228,15 @@ cilium install \
 kubectl get nodes
 kubectl get pods -A
 ```
-3. Create CiliumLoadBalancerIPPool. For the pool `cidr`, it is mandatory to select a /30 or wider range so that we get at least 2 IPs after reserving the first and last ones. For eg if we use `192.168.0.100/30`, we get 2 IPs `192.168.0.101` and `192.168.0.102`. I am planning to use only one LoadBalancer service for the ingress controller, so this works for me. 
+3. Create CiliumLoadBalancerIPPool. For the pool `cidr`, it is mandatory to select a /30 or wider range so that we get at least 2 IPs after reserving the first and last ones. For eg if we use `192.168.0.100/30`, we get 2 IPs `192.168.0.101` and `192.168.0.102`. I am planning to use only one LoadBalancer service for the ingress controller, so this works for me.
 ```bash
 cat <<EOF | kubectl apply -f -
 apiVersion: "cilium.io/v2alpha1"
 kind: CiliumLoadBalancerIPPool
-metadata:
+metadata: 
   name: "cilium-lb-pool"
 spec:
-  cidrs:
+  blocks:
   - cidr: "192.168.0.100/30"
 EOF
 ```
