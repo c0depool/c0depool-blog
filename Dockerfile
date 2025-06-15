@@ -1,4 +1,4 @@
-FROM --platform=linux/x86_64 ruby:3.4.4-alpine AS builder
+FROM --platform=linux/x86_64 ruby:3.3.4-alpine AS builder
 
 RUN apk add --update \
     build-base \
