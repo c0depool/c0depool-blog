@@ -8,3 +8,6 @@ gem "html-proofer", "5.0.10", group: :test
 
 # Make links open in new tab
 gem "jekyll-target-blank", "2.0.2"
+
+# Redirect to and from
+gem "jekyll-redirect-from", "0.16.0"
