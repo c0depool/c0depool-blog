@@ -94,7 +94,12 @@ git clone https://github.com/c0depool/c0depool-iac.git
 cd /var/lib/vz/template/iso
 wget https://geo.mirror.pkgbuild.com/iso/2024.06.01/archlinux-2024.06.01-x86_64.iso
 ```
-4. Update the `c0depool-iac/packer/talos-packer/vars/local.pkrvars.hcl` file in the cloned repository with the Proxmox node and Talos details.
+4. Create a copy of `c0depool-iac/packer/talos-packer/vars/secrets.pkvars.hcl.example` file as `secrets.pkvars.hcl` and update the Proxmox node details.
+```bash
+cd $HOME/c0depool-iac/packer/talos-packer/
+cp secrets.pkvars.hcl.example secrets.pkvars.hcl
+# Update the file secrets.pkvars.hcl
+```
 5. Run Packer to build the Talos template.
 ```bash
 cd $HOME/c0depool-iac/packer/talos-packer/
@@ -106,22 +111,23 @@ After a few minutes, Packer will create a new VM template in Proxmox with ID `97
 
 ## Create Talos VMs using Terraform
 
-1. Create a copy of `c0depool-iac/terraform/c0depool-talos-cluster/example.credentails.auto.tfvars` file as `credentails.auto.tfvars` and update the Proxmox node details.
+1. Create a copy of `c0depool-iac/terraform/c0depool-talos-cluster/credentials.auto.tfvars.example` file as `credentails.auto.tfvars` and update the Proxmox node details.
 ```bash
 cd $HOME/c0depool-iac/terraform/c0depool-talos-cluster/
-cp example.credentails.auto.tfvars credentails.auto.tfvars
+cp credentials.auto.tfvars.example credentails.auto.tfvars
 # Update the file credentails.auto.tfvars
 ```
-2. Open `c0depool-iac/terraform/c0depool-talos-cluster/locals.tf` and add/remove the nodes according to your cluster requirements. By default I have 6 nodes: 3 masters and 3 workers. You should at least have one master and one worker. Here is an example configuration -
+2. Open `c0depool-iac/terraform/c0depool-talos-cluster/terraform.tfvars` and add/remove the nodes according to your cluster requirements. By default I have 6 nodes: 3 masters and 3 workers. You should at least have one master and one worker. Here is an example configuration -
 ```
+clone_target = "talos-v1.10.4-cloud-init-template" # Target template, the one created by packer
+# Master Node configuration
+vm_master_start_ip = "192.168.0.170"  # Starting IP of the nodes (will be incremented by node index)
 vm_master_nodes = {
   "0" = {
     vm_id          = 200                                    # VM ID
     node_name      = "talos-master-00"                      # VM hostname
-    clone_target   = "talos-v1.7.1-cloud-init-template"     # Target template, the one created by packer
     node_cpu_cores = "2"                                    # CPU
     node_memory    = 2048                                   # Memory
-    node_ipconfig  = "ip=192.168.0.170/24,gw=192.168.0.1"   # IP configuration
     node_disk      = "32"                                   # Disk in GB
   }
 }
