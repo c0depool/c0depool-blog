@@ -3,7 +3,6 @@ title: How to Build and Self-Host a Static Website
 date: 2024-02-13 00:59:00 +0000
 categories: [Blogging]
 tags: [self-hosting]
-pin: true
 ---
 
 This blog is (mostly) self-hosted at my home on an old Asus Chromebox running as a container in my local Kubernetes cluster. That being said, running a static website at home doesn’t require any fancy hardware, containers, or Kubernetes. You can run this off a tiny Raspberry Pi Zero, an old laptop, or even an old smartphone. If you don’t want to self-host, there are lots of hosting services like [Github pages](https://pages.github.com/), [Netlify](https://www.netlify.com/), [Heroku](https://www.heroku.com/) etc., where you can run your static site for free! However, in this guide, we dive a little deeper into self-hosting and explore various ways we can run a website at home. If you feel this is total overkill, you are probably right! 😉
