@@ -34,7 +34,6 @@ analytics:
 pageviews:
   provider: goatcounter
 
-
 theme_mode: # [light|dark]
 
 img_cdn:
