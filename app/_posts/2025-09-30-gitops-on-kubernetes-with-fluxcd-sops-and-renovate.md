@@ -3,7 +3,7 @@ title: "GitOps on Kubernetes with FluxCD, SOPS, and Renovate"
 date: 2025-09-30 00:59:00 +0000
 categories: [Self-Hosting]
 tags: [self-hosting,k8s,gitops,flux,fluxcd,sops,secrets]
-pin: false
+pin: true
 image:
   path: /assets/img/2025-09-30-gitops-on-kubernetes-with-fluxcd-sops-and-renovate/gitops.webp
   lqip: data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAAAQAgCdASoQAAgABUB8JbACdLoAAw73kVoAAP7kA2dbkdygZmBZ6ZDQIPMj4+QUJr9E9TPs9uI+Qz/owocAAA==
