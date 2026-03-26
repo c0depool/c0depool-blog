@@ -1,0 +1,24 @@
+FROM docker.io/library/ruby:3.3.4-alpine
+
+# Install build dependencies
+RUN apk add --no-cache \
+    build-base \
+    git \
+    zlib-dev
+
+# Set working directory
+WORKDIR /app
+
+# Copy Gemfile and lock file
+COPY app/Gemfile /app/Gemfile
+COPY app/Gemfile.lock /app/Gemfile.lock
+
+# Install Ruby dependencies
+RUN bundle install
+
+# Expose port for Jekyll development server
+EXPOSE 9000
+
+# Default command - can be overridden when running the container
+ENTRYPOINT ["bundle", "exec"]
+CMD ["jekyll", "serve", "--host", "0.0.0.0", "--port", "9000", "--incremental"]
