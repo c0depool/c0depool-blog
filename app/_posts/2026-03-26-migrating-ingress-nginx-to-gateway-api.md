@@ -273,7 +273,7 @@ kubectl get gateway -n gateways
 ```
 
 You should see the assigned address under `ADDRESS` and `PROGRAMMED: True` before moving on.
-In my case, I just created two gateways for separating internal and external traffic.
+I ended up creating two Gateways -- one for internal traffic and one for external -- but the setup above covers the pattern for both.
 
 To ensure that the `externalTrafficPolicy` we set in the previous step is correct -- try:
 ```bash
@@ -529,6 +529,50 @@ spec:
           port: 3306
 EOF
 ```
+
+### Forward Authentication via OIDC
+
+For apps that need authentication, Envoy Gateway's `SecurityPolicy` handles OIDC natively without the need for a separate forward auth sidecar. I use [Authentik](https://goauthentik.io/) as [my identity provider](https://surajremanan.com/posts/authentik-with-kubernetes-forward-auth/); setting up an OIDC provider and client in Authentik is covered in the [official docs](https://docs.goauthentik.io/docs/add-secure-apps/providers/oauth2/). That said, any OIDC-compliant provider ([Keycloak](https://www.keycloak.org/), [Auth0](https://auth0.com/), etc.) works here -- the steps are identical, just swap in your provider's issuer URL and client credentials.
+
+Once your OIDC client is configured, store the client secret as a Kubernetes `Secret` in the same namespace as the app:
+```bash
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: client-secret
+  namespace: demo
+type: Opaque
+stringData:
+  client-secret: <CLIENT SECRET>
+EOF
+```
+
+Then create a `SecurityPolicy` that targets the `HTTPRoute` you want to protect:
+```bash
+cat <<EOF | kubectl apply -f -
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: oidc-hello-world
+  namespace: demo
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: hello-world-route
+  oidc:
+    provider:
+      issuer: "https://auth.example.com/application/o/hello-world/"
+    clientID: "<CLIENT ID>"
+    clientSecret:
+      name: "client-secret"
+    redirectURL: "https://hellodemo.example.com/oauth2/callback"
+    logoutPath: "/logout"
+EOF
+```
+
+The `SecurityPolicy` attaches directly to the `HTTPRoute`, and any unauthenticated request to `hellodemo.example.com` will now be redirected to your Authentik login page and back.
 
 ## Troubleshooting
 
