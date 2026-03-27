@@ -108,7 +108,7 @@ spec:
 EOF
 ```
 
-The `/30` CIDR gives exactly two usable IPs which I use as my internal and external Gateways. Update the `cidr` block to match your own network range and however many IPs your setup requires.
+The `/30` CIDR gives exactly two usable IPs that I use as my internal and external Gateways. Update the `cidr` block to match your own network range and however many IPs your setup requires.
 
 > Make sure the IP range you choose doesn't overlap with any existing DHCP pool or statically assigned addresses on your network.
 {: .prompt-warning }
@@ -196,7 +196,7 @@ EOF
 
 Before creating the Gateway, there's an important gotcha to address. Because Cilium L2 advertisements work at the ARP level, traffic arriving at the advertised IP will only reach the node currently announcing it. If your Envoy pods are spread across multiple nodes, you'll get intermittent connectivity -- requests silently failing depending on which node the packet lands on.
 
-The fix is to set `externalTrafficPolicy: Cluster` on the LoadBalancer service that Envoy Gateway provisions (Thanks to [this thread on r/kubernetes](https://www.reddit.com/r/kubernetes/comments/1pdgxip/cilium_l2_vips_envoy_gateway/) for the fix!). This ensures Cilium forwards the traffic correctly regardless of which node receives it. Fortunately, Envoy Gateway lets us patch the underlying service via the `EnvoyProxy` CRD rather than touching it directly.
+The fix is to set `externalTrafficPolicy: Cluster` on the LoadBalancer service that Envoy Gateway provisions (thanks to [this thread on r/kubernetes](https://www.reddit.com/r/kubernetes/comments/1pdgxip/cilium_l2_vips_envoy_gateway/) for the fix!). This ensures Cilium forwards the traffic correctly regardless of which node receives it. Fortunately, Envoy Gateway lets us patch the underlying service via the `EnvoyProxy` CRD rather than touching it directly.
 
 Create the `gateways` namespace and the `EnvoyProxy` config:
 ```bash
@@ -554,7 +554,7 @@ kubectl logs -n envoy-gateway-system -l gateway.envoyproxy.io/owning-gateway-nam
 
 ### Admin Console
 
-Envoy Gateway ships with an admin console that you can use to view the stats, metrics, and config dumps. It is useful for verifying that gateways and routes are being picked up correctly by the Envoy data plane.
+Envoy Gateway ships with an admin console that you can use to view the stats, metrics, and config dumps. It's useful for verifying that gateways and routes are being picked up correctly by the Envoy data plane.
 ```bash
 # Access the Envoy admin console
 kubectl port-forward -n envoy-gateway-system deployment/envoy-gateway --address 0.0.0.0 19000:19000
